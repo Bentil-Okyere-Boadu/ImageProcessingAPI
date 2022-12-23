@@ -12,10 +12,12 @@ Project runs on port 8080
 [localhost: example](http://localhost:8080/image?filename=fjord&width=400&height=400)
 
 File names available for processing.
-fjord.jpg
-icelandwaterfall.jpg
-palmtunnel.jpg
-santamonica.jpg
+
+1. fjord.jpg
+2. icelandwaterfall.jpg
+3. palmtunnel.jpg
+4. santamonica.jpg
+5. encenadaport.jpg
 
 ## Build project
 ### *npm run build*
