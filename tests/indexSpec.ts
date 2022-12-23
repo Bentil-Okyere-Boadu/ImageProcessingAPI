@@ -4,8 +4,7 @@ import path from "path"
 import { searchFile } from "../src/services/fileService"
 
 const request = supertest(app)
-const inputDir = path.join(__dirname, '/images')
-const outputDir = path.join(__dirname, '../src/assets/thumbs')
+const inputDir = path.join(__dirname, '../images')
 
 describe('Image API tests', () => {
     describe('Test endpoint responses', () => {
@@ -27,14 +26,6 @@ describe('Image API tests', () => {
 
         it('it checks if the file is not found in assets/images folder', () => {
             expect(searchFile('ford', inputDir)).toBe(false)
-        });
-
-        it('it checks if the file can be found in /thumbs folder', () => {
-            expect(searchFile('fjord200x200', outputDir)).toBe(true)
-        });
-
-        it('it checks if the file is not found in /thumbs folder', () => {
-            expect(searchFile('fjord20', outputDir)).toBe(false)
         });
     });
 });

@@ -26,12 +26,13 @@ app.listen(port, () => {
   try {
     if (!fs.existsSync(buildImageDir)) {
       fs.mkdirSync(buildImageDir);
-      fs.readdirSync(imageDir).map((file) => {
+      fs.readdirSync(imageDir).forEach((file) => {
         fsPromises.copyFile(
           path.join(imageDir, file),
-          `${buildImageDir}`
+          `${buildImageDir}/${file}`
         );
       });
+      fs.mkdirSync(path.join(__dirname, './src/assets'));
       fs.mkdirSync(path.join(__dirname, './src/assets/thumbs'));
       console.log('images copied successfully')
     }
