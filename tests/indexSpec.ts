@@ -4,8 +4,8 @@ import path from "path"
 import { searchFile } from "../src/services/fileService"
 
 const request = supertest(app)
-const inputDir = path.join(__dirname, '../../src/assets/images')
-const outputDir = path.join(__dirname, '../../src/thumbs')
+const inputDir = path.join(__dirname, '/images')
+const outputDir = path.join(__dirname, '../src/assets/thumbs')
 
 describe('Image API tests', () => {
     describe('Test endpoint responses', () => {
@@ -14,10 +14,10 @@ describe('Image API tests', () => {
             expect(response.status).toBe(200);
         });
 
-        // it('gets the /image endpoint', async () => {
-        //     const response = await request.get('/image?filename=icelandwaterfall&width=250&height=300')
-        //     expect(response.status).toBe(200);
-        // });
+        it('gets the /image endpoint', async () => {
+            const response = await request.get('/image?filename=icelandwaterfall&width=250&height=300')
+            expect(response.status).toBe(200);
+        });
     });
 
     describe('File service tests', () => {

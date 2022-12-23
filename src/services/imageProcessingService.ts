@@ -7,8 +7,8 @@ class ImageProcessor {
     filename: string;
     height: number;
     width: number;
-    outputDir: string = path.join(__dirname, '../thumbs')
-    inputDir: string = path.join(__dirname, '../assets/images')
+    outputDir: string = path.join(__dirname, '../assets/thumbs')
+    inputDir: string = path.join(__dirname, '../../images')
 
     constructor(filename: string, height: number, width: number) {
         this.filename = filename;
@@ -29,7 +29,7 @@ class ImageProcessor {
         if (this.checkFileInThumbs()) {
             return this.outputDir.concat(this.filename, `${this.height}x${this.width}.jpg`)
         } else if (this.checkFileInImages()) {
-            const filepath = path.join(__dirname, '../assets/images',`${this.filename}.jpg`)
+            const filepath = path.join(__dirname, '../../images',`${this.filename}.jpg`)
             await sharp(filepath)
             .resize(this.width, this.height)
             .toFile(path.join(this.outputDir, this.filename.concat(`${this.height}x${this.width}.jpg`)))
