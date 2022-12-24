@@ -1,8 +1,8 @@
-import { Router } from "express";
-import getImage from "../controllers/imageController";
+import { Router } from 'express';
+import getImage from '../controllers/imageController';
 
-const imagesRoute = Router()
+const imagesRoute = Router();
 
-imagesRoute.get('/', getImage)
+imagesRoute.get('/', getImage);
 
-export default imagesRoute
+export default imagesRoute;
