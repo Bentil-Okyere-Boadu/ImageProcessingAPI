@@ -2,6 +2,7 @@ import express from 'express';
 import imagesRoute from './src/routes/imagesRoute';
 import notFound from './src/middleware/notFound';
 import errorHandler from './src/middleware/errorHandler';
+import invalidInput from './src/middleware/invalidInput';
 import fs, {promises as fsPromises} from 'fs';
 import path from 'path';
 
@@ -16,6 +17,7 @@ app.get('/api', (_req, res) => {
 
 app.use("/image", imagesRoute)
 app.use(notFound)
+app.use(invalidInput)
 app.use(errorHandler)
 
 app.listen(port, () => {

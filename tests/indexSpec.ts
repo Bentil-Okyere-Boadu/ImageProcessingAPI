@@ -20,13 +20,15 @@ describe('Image API tests', () => {
         });
     });
 
+
+
     describe('Tests image processing', () => {
         it('Checks if image successfully transformed', async() => {
-            expect(await transformImage('palmtunnel', 450, 600)).not.toThrow()
+            await expectAsync(transformImage('palmtunnel', 450, 600)).toBeResolved()
         })
 
         it('Checks if image transform was not successful ', async() => {
-            expect(await transformImage('palmtunnel4434', 450, 600)).toThrow('Error: Input file is missing')
+           await expectAsync(transformImage('palmtunnel4434', 450, 600)).toBeRejected()
         })
     })
 
