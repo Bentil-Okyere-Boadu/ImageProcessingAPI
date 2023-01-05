@@ -6,6 +6,7 @@ import transformImage from "../src/services/transformImage";
 
 const request = supertest(app)
 const inputDir = path.join(__dirname, '../images')
+const outputDir = path.join(__dirname, '../src/assets/thumbs')
 
 describe('Image API tests', () => {
     describe('Test endpoint responses', () => {
@@ -32,12 +33,22 @@ describe('Image API tests', () => {
         })
     })
 
+    describe('Checks if image exists in thumbs folder', () => {
+        it('Returns true if image already exists in assets/thumbs folder', () =>{
+            expect(searchFile('icelandwaterfall300x250', outputDir)).toBe(true)
+        })
+
+        it('Returns false if image does not exist in assets/thumbs folder', () =>{
+            expect(searchFile('icelandwaterfall400x350', outputDir)).toBe(false)
+        })
+    })
+
     describe('File service tests', () => {
-        it('it checks if the file can be found in assets/images folder', () => {
+        it('it checks if the file can be found in images folder', () => {
             expect(searchFile('fjord', inputDir)).toBe(true)
         });
 
-        it('it checks if the file is not found in assets/images folder', () => {
+        it('it checks if the file is not found in images folder', () => {
             expect(searchFile('ford', inputDir)).toBe(false)
         });
     });
